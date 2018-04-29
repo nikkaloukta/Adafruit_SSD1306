@@ -55,7 +55,7 @@ All text above, and the splash screen must be included in any redistribution
 #define SSD1306_I2C_ADDRESS   0x3C  // 011110+SA0+RW - 0x3C or 0x3D
 // Address for 128x32 is 0x3C
 // Address for 128x64 is 0x3D (default) or 0x3C (if SA0 is grounded)
-
+// Adress for 64x48 is 0x3C
 /*=========================================================================
     SSD1306 Displays
     -----------------------------------------------------------------------
@@ -68,17 +68,20 @@ All text above, and the splash screen must be included in any redistribution
     SSD1306_128_32  128x32 pixel display
 
     SSD1306_96_16
+    
+    SSD1306_64_48
 
     -----------------------------------------------------------------------*/
 //   #define SSD1306_128_64
    #define SSD1306_128_32
 //   #define SSD1306_96_16
+//   #define SSD1306_64_48
 /*=========================================================================*/
 
 #if defined SSD1306_128_64 && defined SSD1306_128_32
   #error "Only one SSD1306 display can be specified at once in SSD1306.h"
 #endif
-#if !defined SSD1306_128_64 && !defined SSD1306_128_32 && !defined SSD1306_96_16
+#if !defined SSD1306_128_64 && !defined SSD1306_128_32 && !defined SSD1306_96_16 && !defined SSD1306_64_48
   #error "At least one SSD1306 display must be specified in SSD1306.h"
 #endif
 
@@ -93,6 +96,10 @@ All text above, and the splash screen must be included in any redistribution
 #if defined SSD1306_96_16
   #define SSD1306_LCDWIDTH                  96
   #define SSD1306_LCDHEIGHT                 16
+#endif
+#if defined SSD1306_64_48
+  #define SSD1306_LCDWIDTH                  64
+  #define SSD1306_LCDHEIGHT                 48
 #endif
 
 #define SSD1306_SETCONTRAST 0x81
